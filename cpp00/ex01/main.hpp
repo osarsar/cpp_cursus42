@@ -1,19 +1,20 @@
 #include <iostream>
+#include <iomanip>
 
-typedef struct s_list
+class Contact
 {
-    char firstname[5];
-    char lastname[5];
-    char nickname[5];
-    int phonenumber;
-    char darkestsecret[5];
-
-}t_list;
+    public:
+        std::string firstname;
+        std::string lastname;
+        std::string nickname;
+        std::string phonenumber;
+        std::string darkestsecret;
+};
 
 class PhoneBook
 {
     public: //private
-    t_list contact[8];
+    Contact contact[7];
 
     void add_contact(int i)
     {
@@ -28,21 +29,21 @@ class PhoneBook
         std::cout<<"darkestsecret:\n";
         std::cin>>contact[i].darkestsecret;
         i++;
-        std::cout<<"i = "<<i;
     }
 
     void affiche(int j)
     {
-        std::cout<<"firstname:\n";
-        std::cout<<contact[j].firstname;
-        std::cout<<"lastname:\n";
-        std::cout<<contact[j].lastname;
-        std::cout<<"nickname:\n";
-        std::cout<<contact[j].nickname;
-        std::cout<<"phonenumber:\n";
-        std::cout<<contact[j].phonenumber;
-        std::cout<<"darkestsecret:\n";
-        std::cout<<contact[j].darkestsecret;
-        j++;
+        int i = 0;
+        std::cout<<"     index| firstname|  lastname|  nickname\n";
+        while (i < j)
+        {       
+            std::cout<<std::setw(10)<<i + 1<<"|";
+            std::cout<<std::setw(10)<<contact[i].firstname<<"|";
+            std::cout<<std::setw(10)<<contact[i].lastname<<"|";
+            std::cout<<std::setw(10)<<contact[i].nickname<<"|\n";
+            i++;
+        }
+        // std::cin>>i;
+        // if (i == 1)
     }
 };
