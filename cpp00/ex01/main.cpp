@@ -2,7 +2,7 @@
 
 int main (int ac, char **av)
 {
-    char input[5];
+    std::string input;
     PhoneBook book;
     int flag = 0;
     int i = 0;
@@ -10,19 +10,22 @@ int main (int ac, char **av)
 
     while (1)
     {
-        std::cin>>input;
-        if (std::strcmp(input, "EXIT") == 0)
+        std::getline(std::cin, input);    //clear_getline
+        if (std::cin.eof())
+            break;
+        if (input == "EXIT")
            exit(0);
-        else if (std::strcmp(input, "ADD") == 0)
+        else if (input == "ADD")
         {
             flag = 1;
             book.add_contact(i);
             i++;
+            j++;
         }
-        else if (std::strcmp(input, "SEARCH") == 0)
+        else if (input == "SEARCH")
         {
-            if (flag == 1)
-                j++;
+            // if (flag == 1)
+            //     j++;
             book.affiche(j);
             flag = 0;
         }

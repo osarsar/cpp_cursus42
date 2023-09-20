@@ -1,6 +1,6 @@
 #include <iostream>
 #include <iomanip>
-
+#include <string>
 class Contact
 {
     public:
@@ -18,29 +18,37 @@ class PhoneBook
 
     void add_contact(int i)
     {
-        std::cout<<"firstname:\n";
-        std::cin>>contact[i].firstname;
-        std::cout<<"lastname:\n";
-        std::cin>>contact[i].lastname;
-        std::cout<<"nickname:\n";
-        std::cin>>contact[i].nickname;
-        std::cout<<"phonenumber:\n";
-        std::cin>>contact[i].phonenumber;
-        std::cout<<"darkestsecret:\n";
-        std::cin>>contact[i].darkestsecret;
-        i++;
+        std::cout<<"firstname: ";
+        std::getline(std::cin, contact[i].firstname); 
+        std::cout<<"lastname: ";
+        std::getline(std::cin, contact[i].lastname); 
+        std::cout<<"nickname: ";
+        std::getline(std::cin, contact[i].nickname); 
+        std::cout<<"phonenumber: ";
+        std::getline(std::cin, contact[i].phonenumber); 
+        std::cout<<"darkestsecret: ";
+        std::getline(std::cin, contact[i].darkestsecret); 
     }
 
     void affiche(int j)
     {
         int i = 0;
-        std::cout<<"     index| firstname|  lastname|  nickname\n";
+        std::cout<<"|     index| firstname|  lastname|  nickname|\n";
         while (i < j)
-        {       
-            std::cout<<std::setw(10)<<i + 1<<"|";
-            std::cout<<std::setw(10)<<contact[i].firstname<<"|";
-            std::cout<<std::setw(10)<<contact[i].lastname<<"|";
-            std::cout<<std::setw(10)<<contact[i].nickname<<"|\n";
+        {
+            std::cout<<"|"<<std::setw(10)<<i + 1<<"|";
+            if (contact[i].firstname.length() <= 10)
+                std::cout<<std::setw(10)<<contact[i].firstname<<"|";
+            else
+                std::cout<<std::setw(10)<<contact[i].firstname.substr(0, 9) + "."<<"|";
+            if (contact[i].lastname.length() <= 10)
+                std::cout<<std::setw(10)<<contact[i].lastname<<"|";
+            else
+                std::cout<<std::setw(10)<<contact[i].lastname.substr(0, 9) + "."<<"|";
+            if (contact[i].lastname.length() <= 10)
+                std::cout<<std::setw(10)<<contact[i].nickname<<"|\n";
+            else
+                std::cout<<std::setw(10)<<contact[i].nickname.substr(0, 9) + "."<<"|";       
             i++;
         }
         // std::cin>>i;
