@@ -14,7 +14,7 @@ class Contact
 class PhoneBook
 {
     public: //private
-    Contact contact[7];
+    Contact contact[8];
 
     void add_contact(int i)
     {
@@ -51,7 +51,31 @@ class PhoneBook
                 std::cout<<std::setw(10)<<contact[i].nickname.substr(0, 9) + "."<<"|";       
             i++;
         }
-        // std::cin>>i;
-        // if (i == 1)
+    }
+
+    void choose(int j)
+    {
+        int i = 0;
+
+        if (j != 0)
+        {
+            std::cout<<"choose a index: ";
+            std::cin >> i;
+            if (std::cin.fail())
+            {
+                std::cin.clear();
+                std::cin.ignore(10000, '\n');
+            }
+            if (i <= j && i > 0 && i < 9)
+            {
+                std::cout<<"firstname: "<<contact[i - 1].firstname<<"\n";
+                std::cout<<"lastname: "<<contact[i - 1].lastname<<"\n"; 
+                std::cout<<"nickname: "<<contact[i - 1].nickname<<"\n";
+                std::cout<<"phonenumber: "<<contact[i - 1].phonenumber<<"\n";//check -nb and char   eof ctrl D                // \n "" space tab    8-->0
+                std::cout<<"darkestsecret: "<<contact[i - 1].darkestsecret<<"\n";  
+            }
+            else
+                std::cout<<"not a valid index!\n";
+        }
     }
 };

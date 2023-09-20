@@ -14,7 +14,7 @@ int main (int ac, char **av)
         if (std::cin.eof())
             break;
         if (input == "EXIT")
-           exit(0);
+           return(1);
         else if (input == "ADD")
         {
             flag = 1;
@@ -24,9 +24,8 @@ int main (int ac, char **av)
         }
         else if (input == "SEARCH")
         {
-            // if (flag == 1)
-            //     j++;
             book.affiche(j);
+            book.choose(j);
             flag = 0;
         }
     }
