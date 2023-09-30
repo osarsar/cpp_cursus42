@@ -1,0 +1,1 @@
+in the pointer case the destructer doesn't work

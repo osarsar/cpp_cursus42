@@ -1,16 +1,16 @@
-#include "main.hpp"
+#include "PhoneBook.hpp"
 
-int main (int ac, char **av)
+int x;
+
+int main ()
 {
     std::string input;
     PhoneBook book;
     int flag = 0;
-    int i = 0;
     int j = 0;
-
     while (1)
     {
-        std::getline(std::cin, input);    //clear_getline
+        std::getline(std::cin, input);
         if (std::cin.eof())
             break;
         if (input == "EXIT")
@@ -18,9 +18,10 @@ int main (int ac, char **av)
         else if (input == "ADD")
         {
             flag = 1;
-            book.add_contact(i);
-            i++;
-            j++;
+            book.add_contact();
+            x++;
+            if (j < 8)
+                j++;
         }
         else if (input == "SEARCH")
         {
